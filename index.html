@@ -1,450 +1,239 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking Villa / Kamar Putra Jaya</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-    }
-
-    body{
-      background:#020617;
-      color:white;
-      overflow-x:hidden;
-    }
-
-    .hero{
-      min-height:100vh;
-      position:relative;
-      background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1400&auto=format&fit=crop') center center/cover no-repeat;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:40px 20px;
-    }
-
-    .overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to bottom,rgba(0,0,0,0.7),rgba(0,0,0,0.8));
-    }
-
-    .container{
-      position:relative;
-      z-index:2;
-      width:100%;
-      max-width:1250px;
-      display:grid;
-      grid-template-columns:1.2fr 0.9fr;
-      gap:40px;
-      align-items:center;
-    }
-
-    .left h1{
-      font-size:70px;
-      line-height:1;
-      margin-bottom:20px;
-      font-weight:800;
-    }
-
-    .left h1 span{
-      color:#facc15;
-    }
-
-    .left p{
-      font-size:18px;
-      line-height:1.9;
-      color:#e2e8f0;
-      max-width:650px;
-      margin-bottom:30px;
-    }
-
-    .tag{
-      display:inline-block;
-      background:#facc15;
-      color:black;
-      padding:10px 18px;
-      border-radius:999px;
-      font-weight:700;
-      margin-bottom:20px;
-    }
-
-    .features{
-      display:flex;
-      flex-wrap:wrap;
-      gap:15px;
-    }
-
-    .feature{
-      background:rgba(255,255,255,0.1);
-      border:1px solid rgba(255,255,255,0.1);
-      padding:14px 18px;
-      border-radius:16px;
-      backdrop-filter:blur(12px);
-      font-size:14px;
-    }
-
-    .card{
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.1);
-      backdrop-filter:blur(20px);
-      padding:30px;
-      border-radius:30px;
-      box-shadow:0 10px 40px rgba(0,0,0,0.4);
-    }
-
-    .card h2{
-      font-size:30px;
-      margin-bottom:10px;
-    }
-
-    .subtitle{
-      color:#cbd5e1;
-      margin-bottom:25px;
-    }
-
-    .price-box{
-      background:linear-gradient(135deg,#facc15,#eab308);
-      color:black;
-      padding:18px;
-      border-radius:18px;
-      text-align:center;
-      font-weight:800;
-      font-size:24px;
-      margin-bottom:25px;
-    }
-
-    .input-group{
-      margin-bottom:18px;
-    }
-
-    label{
-      display:block;
-      margin-bottom:8px;
-      color:#f1f5f9;
-      font-size:14px;
-    }
-
-    input,select{
-      width:100%;
-      padding:15px;
-      border:none;
-      border-radius:16px;
-      background:#f8fafc;
-      font-size:15px;
-      color:#0f172a;
-      font-weight:500;
-    }
-
-    .summary{
-      margin-top:20px;
-      background:rgba(250,204,21,0.1);
-      border:1px solid rgba(250,204,21,0.2);
-      padding:22px;
-      border-radius:20px;
-    }
-
-    .summary p{
-      margin-bottom:10px;
-      color:#e2e8f0;
-    }
-
-    .total{
-      font-size:34px;
-      font-weight:800;
-      color:#facc15;
-      margin-top:10px;
-    }
-
-    .status{
-      margin-top:15px;
-      padding:14px;
-      border-radius:14px;
-      font-weight:600;
-      text-align:center;
-    }
-
-    .belum{
-      background:rgba(239,68,68,0.2);
-      color:#fecaca;
-      border:1px solid rgba(239,68,68,0.3);
-    }
-
-    .sudah{
-      background:rgba(34,197,94,0.2);
-      color:#bbf7d0;
-      border:1px solid rgba(34,197,94,0.3);
-    }
-
-    .btn{
-      width:100%;
-      margin-top:25px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      background:#22c55e;
-      color:white;
-      border-radius:18px;
-      text-decoration:none;
-      font-weight:700;
-      font-size:17px;
-      transition:0.3s;
-    }
-
-    .btn:hover{
-      transform:translateY(-3px);
-      background:#16a34a;
-    }
-
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:20px;
-      padding:50px 20px;
-      max-width:1250px;
-      margin:auto;
-    }
-
-    .gallery img{
-      width:100%;
-      height:240px;
-      object-fit:cover;
-      border-radius:22px;
-      transition:0.4s;
-    }
-
-    .gallery img:hover{
-      transform:scale(1.03);
-    }
-
-    .footer{
-      padding:30px;
-      text-align:center;
-      background:#000;
-      color:#94a3b8;
-    }
-
-    @media(max-width:950px){
-      .container{
-        grid-template-columns:1fr;
-      }
-
-      .left h1{
-        font-size:50px;
-      }
-    }
-
-    @media(max-width:600px){
-      .left h1{
-        font-size:38px;
-      }
-
-      .card{
-        padding:22px;
-      }
-
-      .total{
-        font-size:28px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa & Kamaran Putrajaya - Sewa Per Jam</title>
+    <!-- Tailwind CSS v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-<section class="hero">
-  <div class="overlay"></div>
-
-  <div class="container">
-
-    <div class="left">
-      <div class="tag">PUTRA JAYA • HOTEL • VILLA</div>
-
-      <h1>
-        BOOKING <span>PUTRA JAYA</span>
-      </h1>
-
-      <p>
-        Booking Villa / Kamar Putra Jaya dengan sistem otomatis modern.
-        Bisa memilih hari biasa atau weekend, waktu siang atau malam,
-        dan total harga langsung muncul secara real-time.
-      </p>
-
-      <div class="features">
-        <div class="feature">🏨 Premium Room</div>
-        <div class="feature">📱 WhatsApp Otomatis</div>
-        <div class="feature">🌙 Paket Malam</div>
-        <div class="feature">☀️ Paket Siang</div>
-        <div class="feature">🔥 Harga Weekend</div>
-        <div class="feature">💳 Status Pembayaran</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Booking Sekarang</h2>
-      <div class="subtitle">Isi data booking untuk melihat total pembayaran otomatis.</div>
-
-      <div class="price-box">
-        Mulai Rp18.000 / Jam
-      </div>
-
-      <div class="input-group">
-        <label>Nama Pemesan</label>
-        <input type="text" id="nama" placeholder="Masukkan nama">
-      </div>
-
-      <div class="input-group">
-        <label>Tanggal Booking</label>
-        <input type="date" id="tanggal">
-      </div>
-
-      <div class="input-group">
-        <label>Pilih Hari</label>
-        <select id="hariType">
-          <option value="18000">Hari Biasa - Rp18.000/jam</option>
-          <option value="25000">Weekend - Rp25.000/jam</option>
-        </select>
-      </div>
-
-      <div class="input-group">
-        <label>Pilih Nomor Kamar</label>
-        <select id="kamar">
-          <option value="Kamar 1">🛏️ Kamar 1 - ✅ Tersedia</option>
-          <option value="Kamar 2">🛏️ Kamar 2 - ❌ Penuh</option>
-          <option value="Kamar 3">🛏️ Kamar 3 - ✅ Tersedia</option>
-          <option value="Kamar 4">🛏️ Kamar 4 - ✅ Tersedia</option>
-          <option value="Kamar 5">🛏️ Kamar 5 - ❌ Penuh</option>
-        </select>
-      </div>
-
-      <div id="statusKamar" style="margin-top:-5px;margin-bottom:18px;padding:14px;border-radius:14px;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#bbf7d0;font-weight:600;">
-        Kamar ke: 1
-      </div>
-
-      <div class="input-group">
-        <label>Pilih Paket</label>
-        <select id="paket">
-          <option value="Siang">☀️ Siang</option>
-          <option value="Malam">🌙 Malam</option>
-        </select>
-      </div>
-
-      <div class="input-group">
-        <label>Jam Check-In</label>
-        <input type="time" id="masuk">
-      </div>
-
-      <div class="input-group">
-        <label>Jam Check-Out</label>
-        <input type="time" id="keluar">
-      </div>
-
-      <div class="input-group">
-        <label>Metode Pembayaran</label>
-        <select id="statusBayar">
-          <option value="Cash">💵 Cash</option>
-          <option value="Transfer">🏦 Transfer</option>
-        </select>
-      </div>
-
-      <div class="summary">
-        <p id="durasi">Durasi: 0 Jam</p>
-        <p id="hargaPerJam">Harga per jam: Rp18.000</p>
-        <div class="total" id="total">Rp0</div>
-
-        <div class="status belum" id="statusText">
-          Metode: Cash
+    <!-- Navbar -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-black text-blue-900 tracking-tight">PUTRAJAYA<span class="text-amber-500">STAY</span></a>
+            <div class="space-x-8 hidden md:flex font-semibold text-sm tracking-wide uppercase">
+                <a href="#home" class="text-blue-900 hover:text-amber-500 transition-colors">Home</a>
+                <a href="#akomodasi" class="text-gray-600 hover:text-blue-900 transition-colors">Akomodasi</a>
+                <a href="#fasilitas" class="text-gray-600 hover:text-blue-900 transition-colors">Fasilitas</a>
+                <a href="#testimoni" class="text-gray-600 hover:text-blue-900 transition-colors">Testimoni</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Putrajaya%20Stay,%20saya%20ingin%20tanya%20sewa%20kamar%20per%20jam." target="_blank" class="bg-blue-900 text-white px-5 py-2.5 rounded-lg hover:bg-amber-500 hover:text-blue-900 transition-all duration-300 shadow-md shadow-blue-900/20">Pesan Sekarang</a>
+            </div>
         </div>
-      </div>
+    </nav>
 
-      <a href="#" class="btn" id="waBtn" target="_blank">
-        Booking via WhatsApp
-      </a>
+    <!-- Hero Section -->
+    <header id="home" class="relative bg-gray-900 text-white h-[85vh] flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80');">
+        <div class="text-center px-4 max-w-4xl mx-auto">
+            <span class="bg-amber-500/20 text-amber-400 text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-amber-500/30 mb-6 inline-block">Sewa Fleksibel Per Jam / Transit</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight">Istirahat Nyaman & Hemat dengan Tarif Per Jam</h1>
+            <p class="text-lg md:text-xl mb-10 text-gray-300 max-w-2xl mx-auto font-light">Butuh tempat istirahat sejenak atau transit? Kami menyediakan sewa Villa dan Kamaran dengan durasi fleksibel sesuai kebutuhan Anda.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#akomodasi" class="bg-amber-500 text-blue-950 px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-400 transition-all shadow-lg shadow-amber-500/20 transform hover:-translate-y-0.5">Lihat Tarif Per Jam</a>
+                <a href="#fasilitas" class="bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all transform hover:-translate-y-0.5">Fasilitas Kami</a>
+            </div>
+        </div>
+    </header>
 
-    </div>
+    <!-- Pilihan Akomodasi -->
+    <section id="akomodasi" class="max-w-6xl mx-auto px-4 py-24">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">Tipe Akomodasi & Tarif Per Jam</h2>
+            <p class="text-gray-600 max-w-xl mx-auto text-lg font-light">Bayar sesuai waktu yang Anda gunakan. Lebih hemat, praktis, dan tetap mengutamakan kenyamanan.</p>
+        </div>
 
-  </div>
-</section>
+        <div class="grid md:grid-cols-2 gap-10">
+            <!-- Tipe Kamaran -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col h-full">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Kamaran Putrajaya" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-sm">Tipe Kamaran (Transit)</span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Kamar Standard / Transit</h3>
+                    <p class="text-gray-600 mb-6 font-light leading-relaxed">Sangat cocok untuk pekerja lapangan, solo traveler, atau siapapun yang butuh istirahat, mandi, dan nge-charge energi dalam hitungan jam.</p>
+                    
+                    <div class="mb-8 bg-gray-50 p-4 rounded-xl">
+                        <h4 class="font-bold text-gray-700 text-sm uppercase tracking-wide mb-3">Fasilitas Kamar:</h4>
+                        <ul class="grid grid-cols-2 gap-3 text-sm text-gray-600">
+                            <li class="flex items-center"><i class="fa-solid fa-bed text-blue-600 mr-2.5 w-4"></i> Kasur Queen Size</li>
+                            <li class="flex items-center"><i class="fa-solid fa-snowflake text-blue-600 mr-2.5 w-4"></i> Full AC</li>
+                            <li class="flex items-center"><i class="fa-solid fa-wifi text-blue-600 mr-2.5 w-4"></i> Wi-Fi Cepat</li>
+                            <li class="flex items-center"><i class="fa-solid fa-shower text-blue-600 mr-2.5 w-4"></i> Kamar Mandi Dalam</li>
+                        </ul>
+                    </div>
 
-<section class="gallery">
-  <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop">
-  <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
-  <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1200&auto=format&fit=crop">
-  <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1200&auto=format&fit=crop">
-</section>
+                    <div class="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Tarif Minimal (3 Jam)</p>
+                            <p class="text-2xl font-black text-blue-900">Rp 50.000<span class="text-sm font-normal text-gray-500">/jam</span></p>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20tanya%20sewa%20Tipe%20Kamaran%20per%20jam." target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-xl font-bold hover:bg-green-600 transition-colors shadow-md shadow-green-500/10 flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Cek Slot
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-<div class="footer">
-  © 2026 Booking Villa / Kamar Putra Jaya
-</div>
+            <!-- Tipe Villa -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col h-full">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80" alt="Villa Putrajaya" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 bg-amber-500 text-blue-950 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-sm">Tipe Villa (Short Stay)</span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Villa Rumah Penuh (Short Stay)</h3>
+                    <p class="text-gray-600 mb-6 font-light leading-relaxed">Solusi hemat untuk tempat singgah rombongan, keluarga, atau ruang meeting / acara gathering singkat dengan suasana privat beberapa jam saja.</p>
+                    
+                    <div class="mb-8 bg-gray-50 p-4 rounded-xl">
+                        <h4 class="font-bold text-gray-700 text-sm uppercase tracking-wide mb-3">Fasilitas Villa:</h4>
+                        <ul class="grid grid-cols-2 gap-3 text-sm text-gray-600">
+                            <li class="flex items-center"><i class="fa-solid fa-house text-amber-500 mr-2.5 w-4"></i> 3 Kamar Tidur AC</li>
+                            <li class="flex items-center"><i class="fa-solid fa-kitchen-set text-amber-500 mr-2.5 w-4"></i> Dapur & Alat Masak</li>
+                            <li class="flex items-center"><i class="fa-solid fa-couch text-amber-500 mr-2.5 w-4"></i> Ruang Tamu & TV</li>
+                            <li class="flex items-center"><i class="fa-solid fa-square-parking text-amber-500 mr-2.5 w-4"></i> Parkir 3 Mobil</li>
+                        </ul>
+                    </div>
 
-<script>
-  const nama = document.getElementById('nama');
-  const tanggal = document.getElementById('tanggal');
-  const hariType = document.getElementById('hariType');
-  const kamar = document.getElementById('kamar');
-  const paket = document.getElementById('paket');
-  const masuk = document.getElementById('masuk');
-  const keluar = document.getElementById('keluar');
-  const total = document.getElementById('total');
-  const durasi = document.getElementById('durasi');
-  const hargaPerJam = document.getElementById('hargaPerJam');
-  const statusBayar = document.getElementById('statusBayar');
-  const statusText = document.getElementById('statusText');
-  const waBtn = document.getElementById('waBtn');
-  const statusKamar = document.getElementById('statusKamar');
+                    <div class="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Tarif Minimal (4 Jam)</p>
+                            <p class="text-2xl font-black text-blue-900">Rp 125.000<span class="text-sm font-normal text-gray-500">/jam</span></p>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20tanya%20sewa%20Tipe%20Villa%20per%20jam." target="_blank" class="bg-green-500 text-white px-5 py-3 rounded-xl font-bold hover:bg-green-600 transition-colors shadow-md shadow-green-500/10 flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Cek Slot
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  function hitung(){
+    <!-- Fasilitas Umum -->
+    <section id="fasilitas" class="bg-blue-950 text-white py-24">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Mengapa Memilih Putrajaya Stay?</h2>
+                <p class="text-blue-200 max-w-xl mx-auto text-lg font-light">Layanan prima dan fleksibilitas waktu untuk menjamin kepuasan menginap singkat Anda.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors duration-300">
+                    <div class="w-14 h-14 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-clock"></i></div>
+                    <h4 class="font-bold text-lg mb-2">Waktu Fleksibel</h4>
+                    <p class="text-sm text-blue-200 font-light">Check-in kapan saja, bayar sesuai durasi jam yang Anda pilih.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors duration-300">
+                    <div class="w-14 h-14 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-square-parking"></i></div>
+                    <h4 class="font-bold text-lg mb-2">Parkir Luas</h4>
+                    <p class="text-sm text-blue-200 font-light">Area parkir memadai dan aman langsung di depan unit penginapan.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors duration-300">
+                    <div class="w-14 h-14 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-location-dot"></i></div>
+                    <h4 class="font-semibold text-lg mb-2">Akses Strategis</h4>
+                    <p class="text-sm text-blue-200 font-light">Dekat dengan pusat kuliner, jalan utama, dan fasilitas publik.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors duration-300">
+                    <div class="w-14 h-14 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-broom"></i></div>
+                    <h4 class="font-bold text-lg mb-2">Sangat Bersih</h4>
+                    <p class="text-sm text-blue-200 font-light">Setiap kali tamu check-out, kamar langsung dibersihkan dan disinfeksi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    statusKamar.innerHTML = `Kamar ke: ${kamar.value.replace('Kamar ','')}`;
+    <!-- Testimoni Pelanggan -->
+    <section id="testimoni" class="max-w-6xl mx-auto px-4 py-24">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">Apa Kata Mereka?</h2>
+            <p class="text-gray-600 max-w-xl mx-auto text-lg font-light">Ulasan dari para tamu yang menyukai sistem sewa jam-jaman kami.</p>
+        </div>
 
-    const harga = parseInt(hariType.value);
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex text-amber-400 gap-1 mb-4">
+                        <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+                    </div>
+                    <p class="text-gray-600 font-light text-sm italic leading-relaxed">"Sangat terbantu dengan sistem per jam. Kebetulan ada delay kerjaan 4 jam di luar kota, bisa numpang mandi, selonjoran di kasur empuk, dan ngadem pake AC."</p>
+                </div>
+                <div class="mt-6 flex items-center gap-3 pt-4 border-t border-gray-50">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-900 font-bold text-sm flex items-center justify-center">AH</div>
+                    <div>
+                        <h5 class="font-bold text-sm text-gray-900">Ahmad Hidayat</h5>
+                        <p class="text-xs text-gray-400">Tamu Transit 3 Jam</p>
+                    </div>
+                </div>
+            </div>
 
-    hargaPerJam.innerHTML = `Harga per jam: Rp${harga.toLocaleString('id-ID')}`;
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex text-amber-400 gap-1 mb-4">
+                        <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+                    </div>
+                    <p class="text-gray-600 font-light text-sm italic leading-relaxed">"Sewa villa cuma 5 jam buat acara arisan keluarga singkat. Daripada sewa gedung mahal, mending sewa ini lebih privat, ada dapurnya juga buat ngangetin makanan."</p>
+                </div>
+                <div class="mt-6 flex items-center gap-3 pt-4 border-t border-gray-50">
+                    <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-900 font-bold text-sm flex items-center justify-center">RL</div>
+                    <div>
+                        <h5 class="font-bold text-sm text-gray-900">Rina Lestari</h5>
+                        <p class="text-xs text-gray-400">Tamu Acara Villa (5 Jam)</p>
+                    </div>
+                </div>
+            </div>
 
-    if(masuk.value && keluar.value){
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex text-amber-400 gap-1 mb-4">
+                        <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+                    </div>
+                    <p class="text-gray-600 font-light text-sm italic leading-relaxed">"Harga per jamnya murah banget tapi kualitas kamarnya bersih wangi, mirip hotel berbintang. Cocok buat yang mau istirahat sebentar pas lelah berkendara."</p>
+                </div>
+                <div class="mt-6 flex items-center gap-3 pt-4 border-t border-gray-50">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-900 font-bold text-sm flex items-center justify-center">BP</div>
+                    <div>
+                        <h5 class="font-bold text-sm text-gray-900">Bambang P.</h5>
+                        <p class="text-xs text-gray-400">Pelanggan Transit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      const jamMasuk = new Date(`1970-01-01T${masuk.value}:00`);
-      const jamKeluar = new Date(`1970-01-01T${keluar.value}:00`);
+    <!-- Call to Action -->
+    <section class="max-w-6xl mx-auto px-4 pb-24">
+        <div class="bg-gradient-to-r from-blue-900 to-blue-950 rounded-3xl p-12 text-center text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl"></div>
+            <h3 class="text-3xl font-extrabold mb-4 tracking-tight">Butuh Kamar Transit Sekarang?</h3>
+            <p class="text-blue-200 max-w-lg mx-auto mb-8 font-light text-sm sm:text-base">Tanyakan langsung slot jam yang kosong pada hari ini kepada admin kami. Respon cepat 24 jam via WhatsApp.</p>
+            <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Putrajaya%20Stay,%20saya%20ingin%20booking%20kamar%20transit%20per%20jam%20untuk%20hari%20ini." target="_blank" class="bg-green-500 text-white font-bold px-8 py-4 rounded-xl hover:bg-green-600 transition-all shadow-lg inline-flex items-center gap-2 text-lg">
+                <i class="fa-brands fa-whatsapp text-2xl"></i> Hubungi via WhatsApp
+            </a>
+        </div>
+    </section>
 
-      let selisih = (jamKeluar - jamMasuk) / (1000*60*60);
-
-      if(selisih > 0){
-
-        const bayar = selisih * harga;
-
-        durasi.innerHTML = `Durasi: ${selisih} Jam`;
-        total.innerHTML = `Rp${bayar.toLocaleString('id-ID')}`;
-
-        statusText.className = 'status sudah';
-        statusText.innerHTML = `Metode: ${statusBayar.value}`;
-
-        const pesan = `Halo Putra Jaya,%0A%0ASaya ingin booking kamar.%0A%0ANama: ${nama.value}%0ATanggal: ${tanggal.value}%0AHari: ${hariType.options[hariType.selectedIndex].text}%0AKamar: ${kamar.value}%0APaket: ${paket.value}%0ACheck-In: ${masuk.value}%0ACheck-Out: ${keluar.value}%0ADurasi: ${selisih} Jam%0ATotal: Rp${bayar.toLocaleString('id-ID')}%0AMetode Pembayaran: ${statusBayar.value}`;
-
-        waBtn.href = `https://wa.me/6281515491426?text=${pesan}`;
-
-      }
-    }
-  }
-
-  masuk.addEventListener('change',hitung);
-  keluar.addEventListener('change',hitung);
-  hariType.addEventListener('change',hitung);
-  paket.addEventListener('change',hitung);
-  kamar.addEventListener('change',hitung);
-  statusBayar.addEventListener('change',hitung);
-  nama.addEventListener('input',hitung);
-  tanggal.addEventListener('change',hitung);
-</script>
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-500 py-12 border-t border-gray-900 text-sm">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+            <div class="text-center md:text-left">
+                <p class="font-black text-white text-lg tracking-tight mb-2">PUTRAJAYA<span class="text-amber-500">STAY</span></p>
+                <p class="font-light text-gray-400">Sistem Pemesanan & Landing Page Resmi Properti Villa dan Kamaran Per Jam Putrajaya.</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="font-medium text-gray-400 mb-2">Lokasi Penginapan:</p>
+                <p class="font-light text-xs text-gray-500 mb-6">Area Strategis Putrajaya (Hubungi admin untuk share lokasi lewat WhatsApp)</p>
+                <p class="text-xs">&copy; 2026 Putrajaya Stay. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
