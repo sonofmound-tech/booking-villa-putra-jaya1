@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Kamar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .harga {
+      margin-top: 20px;
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+      color: green;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      background: #25D366;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .info {
+      text-align: center;
+      color: #666;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Booking Villa / Kamar</h1>
+
+    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop" alt="Villa">
+
+    <p class="info">Harga per malam: Rp350.000</p>
+
+    <label>Check-in</label>
+    <input type="date" id="checkin">
+
+    <label>Check-out</label>
+    <input type="date" id="checkout">
+
+    <div class="harga" id="totalHarga">
+      Total Harga: Rp0
+    </div>
+
+    <a class="btn" id="waBtn" target="_blank">
+      Booking via WhatsApp
+    </a>
+  </div>
+
+  <script>
+    const hargaPerMalam = 350000;
+
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    const totalHarga = document.getElementById('totalHarga');
+    const waBtn = document.getElementById('waBtn');
+
+    function hitungHarga() {
+      const tglMasuk = new Date(checkin.value);
+      const tglKeluar = new Date(checkout.value);
+
+      if (checkin.value && checkout.value) {
+        const selisih = (tglKeluar - tglMasuk) / (1000 * 60 * 60 * 24);
+
+        if (selisih > 0) {
+          const total = selisih * hargaPerMalam;
+
+          totalHarga.innerHTML = `Total Harga: Rp${total.toLocaleString('id-ID')}`;
+
+          const pesan = `Halo, saya ingin booking kamar.%0A%0ACheck-in: ${checkin.value}%0ACheck-out: ${checkout.value}%0ATotal Harga: Rp${total.toLocaleString('id-ID')}`;
+
+          waBtn.href = `https://wa.me/6281234567890?text=${pesan}`;
+        } else {
+          totalHarga.innerHTML = 'Tanggal tidak valid';
+        }
+      }
+    }
+
+    checkin.addEventListener('change', hitungHarga);
+    checkout.addEventListener('change', hitungHarga);
+  </script>
+
+</body>
+</html>
